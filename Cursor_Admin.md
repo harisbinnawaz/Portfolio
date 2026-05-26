@@ -1012,3 +1012,19 @@ This project is an executive engineering portfolio — not a startup landing pag
 
 # END OF Cursor_Admin.md
 # Version 1.0 — Dynamic CMS Architecture Edition
+
+
+
+
+
+ok done created 
+
+now the Things missing from the Admin Panel are:
+
+- Unable to edit the name, and unable to remove or add an already added thing
+
+
+
+So write a new prompt that will  ask chat gpt to regenerate a new prompt for the antigravity to fix these issues
+
+but make sure the current theme and lay out remains the same
