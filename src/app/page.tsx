@@ -6,27 +6,40 @@ import { AchievementsBento } from "@/components/AchievementsBento/AchievementsBe
 import { TechnicalArsenal } from "@/components/TechnicalArsenal/TechnicalArsenal";
 import { Footer } from "@/components/Footer/Footer";
 import { SectionDivider } from "@/components/ui/SectionDivider";
+import {
+  getAchievements,
+  getExperience,
+  getMechanicsVideos,
+  getTechArsenal,
+} from "@/lib/data/fetch";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [experience, mechanics, achievements, arsenal] = await Promise.all([
+    getExperience(),
+    getMechanicsVideos(),
+    getAchievements(),
+    getTechArsenal(),
+  ]);
+
   return (
     <main className="min-h-screen bg-charcoal-950">
       <Navigation />
       <Hero />
       <SectionDivider />
       <section className="px-6 py-section md:px-16 lg:px-24">
-        <ExperienceTimeline />
+        <ExperienceTimeline items={experience} />
       </section>
       <SectionDivider />
       <section className="px-6 py-section md:px-16 lg:px-24">
-        <MechanicsGallery />
+        <MechanicsGallery items={mechanics.items} featuredId={mechanics.featuredId} />
       </section>
       <SectionDivider />
       <section className="px-6 py-section md:px-16 lg:px-24">
-        <AchievementsBento />
+        <AchievementsBento items={achievements} />
       </section>
       <SectionDivider />
       <section className="px-6 py-section md:px-16 lg:px-24">
-        <TechnicalArsenal />
+        <TechnicalArsenal arsenal={arsenal} />
       </section>
       <SectionDivider />
       <Footer />

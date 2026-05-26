@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { EXPERIENCE } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { fadeUpVariant, staggerContainer, useReducedMotion } from "@/lib/motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -102,7 +101,11 @@ function ExperienceCard({ item, index }: { item: ExperienceItem; index: number }
   );
 }
 
-export function ExperienceTimeline() {
+interface ExperienceTimelineProps {
+  items: ExperienceItem[];
+}
+
+export function ExperienceTimeline({ items }: ExperienceTimelineProps) {
   const reducedMotion = useReducedMotion();
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
@@ -123,7 +126,7 @@ export function ExperienceTimeline() {
           initial={reducedMotion ? false : "hidden"}
           animate={inView ? "visible" : "hidden"}
         >
-          {EXPERIENCE.map((item, index) => (
+          {items.map((item, index) => (
             <ExperienceCard key={item.id} item={item} index={index} />
           ))}
         </motion.ol>

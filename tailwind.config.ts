@@ -7,18 +7,18 @@ const config: Config = {
     extend: {
       colors: {
         charcoal: {
-          950: "#0a0a0a",
-          900: "#111111",
-          800: "#1a1a1a",
+          950: "var(--bg-primary)",
+          900: "var(--bg-secondary)",
+          800: "var(--card-bg)",
           700: "#242424",
-          600: "#2e2e2e",
+          600: "var(--border-color)",
           500: "#3a3a3a",
         },
         luxury: {
-          gold: "#b89c6e",
-          silver: "#9ca3af",
-          ivory: "#f5f0e8",
-          warm: "#e8e0d0",
+          gold: "var(--accent-primary)",
+          silver: "var(--text-secondary)",
+          ivory: "var(--text-primary)",
+          warm: "var(--accent-secondary)",
           muted: "#a89880",
         },
       },

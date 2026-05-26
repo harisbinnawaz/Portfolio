@@ -11,17 +11,29 @@
 @layer base {
   :root {
     color-scheme: dark;
+
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #111111;
+    --text-primary: #f5f0e8;
+    --text-secondary: #9ca3af;
+    --accent-primary: #b89c6e;
+    --accent-secondary: #e8e0d0;
+    --card-bg: #1a1a1a;
+    --border-color: #2e2e2e;
   }
 
   html {
-    @apply bg-charcoal-950 text-luxury-warm scroll-smooth;
+    background-color: var(--bg-primary);
+    color: var(--accent-secondary);
+    scroll-behavior: smooth;
     font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   ::selection {
-    @apply bg-luxury-gold/20 text-luxury-ivory;
+    background-color: color-mix(in srgb, var(--accent-primary) 20%, transparent);
+    color: var(--text-primary);
   }
 
   ::-webkit-scrollbar {
@@ -29,11 +41,12 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-charcoal-950;
+    background-color: var(--bg-primary);
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-luxury-gold/40 rounded-full;
+    background-color: color-mix(in srgb, var(--accent-primary) 40%, transparent);
+    border-radius: 9999px;
   }
 }
 
@@ -42,9 +55,15 @@
     text-wrap: balance;
   }
   .border-luxury {
-    @apply border-charcoal-600/50;
+    border-color: color-mix(in srgb, var(--border-color) 50%, transparent);
   }
   .divider {
-    @apply w-full h-px bg-gradient-to-r from-transparent via-charcoal-600 to-transparent;
+    @apply w-full h-px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      color-mix(in srgb, var(--border-color) 100%, transparent),
+      transparent
+    );
   }
 }

@@ -2,11 +2,15 @@
 
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
-import { TECH_ARSENAL } from "@/lib/constants";
 import { fadeUpVariant, staggerContainer, useReducedMotion } from "@/lib/motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import type { TechSkill } from "@/types";
 
-export function TechnicalArsenal() {
+interface TechnicalArsenalProps {
+  arsenal: Record<string, TechSkill[]>;
+}
+
+export function TechnicalArsenal({ arsenal }: TechnicalArsenalProps) {
   const reducedMotion = useReducedMotion();
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
@@ -21,7 +25,7 @@ export function TechnicalArsenal() {
         initial={reducedMotion ? false : "hidden"}
         animate={inView ? "visible" : "hidden"}
       >
-        {Object.entries(TECH_ARSENAL).map(([category, skills]) => (
+        {Object.entries(arsenal).map(([category, skills]) => (
           <motion.article
             key={category}
             variants={fadeUpVariant}

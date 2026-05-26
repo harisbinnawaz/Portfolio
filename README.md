@@ -34,3 +34,13 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Design system
 
 Custom tokens live in `tailwind.config.ts` (charcoal, luxury gold/ivory/warm) and `src/app/globals.css`.
+
+## Supabase CMS setup
+
+1. Create a [Supabase](https://supabase.com) project and copy URL + anon key into `.env.local` (see `.env.example`).
+2. Run `supabase/migrations/001_initial_schema.sql` in the SQL Editor.
+3. Create Storage buckets: `videos`, `thumbnails`, `certificates`, `branding` (public read).
+4. Run `supabase/storage_policies.sql` after buckets exist.
+5. Enable Email auth, disable public signups, create an admin user.
+6. In Database → Replication, enable realtime for `site_settings` (optional, for live theme updates).
+7. Sign in at `/login`, manage content at `/admin`.

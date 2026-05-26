@@ -36,3 +36,5 @@ export interface TechSkill {
   name: string;
   proficiency: string;
 }
+
+export type TechArsenal = Record<string, TechSkill[]>;
